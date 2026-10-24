@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mission Control: The Next Frontier</title>
+  <meta name="description" content="Prototipo educativo de diseño de misiones espaciales." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">SPACE MISSION DESIGN GAME · PROTOTIPO</p>
+        <h1>MISSION CONTROL</h1>
+      </div>
+      <button id="resetBtn" class="ghost-btn" type="button">Reiniciar</button>
+    </header>
+
+    <section id="hud" class="hud hidden" aria-label="Recursos de misión">
+      <div class="hud-item"><span>💰 Presupuesto</span><strong id="hudBudget">100</strong><small>M créditos</small></div>
+      <div class="hud-item"><span>⚡ Energía</span><strong id="hudEnergy">100</strong><small>u.</small></div>
+      <div class="hud-item"><span>⚖️ Masa</span><strong id="hudMass">0</strong><small>/ 1000 kg</small></div>
+      <div class="hud-item"><span>🛡️ Seguridad</span><strong id="hudSafety">50</strong><small>/ 100</small></div>
+      <div class="hud-item"><span>🔬 Ciencia</span><strong id="hudScience">0</strong><small>/ 100</small></div>
+    </section>
+
+    <section id="screen-home" class="screen active hero-screen">
+      <div class="hero-copy">
+        <p class="mission-tag">AÑO 2038 · CENTRO DE CONTROL</p>
+        <h2>Tu equipo ha sido elegido para diseñar una misión espacial.</h2>
+        <p>Tu misión es equilibrar ciencia, seguridad, energía, masa y presupuesto. Cada decisión tendrá consecuencias.</p>
+        <button class="primary-btn" data-go="destination">INICIAR MISIÓN →</button>
+      </div>
+      <div class="planet-wrap" aria-hidden="true"><div class="planet"></div><div class="orbit"></div></div>
+    </section>
+
+    <section id="screen-destination" class="screen">
+      <div class="section-heading">
+        <p class="step">FASE 1 / 5</p>
+        <h2>Selecciona tu destino</h2>
+        <p>Cada destino cambia las condiciones de la misión.</p>
+      </div>
+      <div id="destinationCards" class="card-grid"></div>
+      <div class="actions"><button id="destinationNext" class="primary-btn" disabled>CONFIRMAR DESTINO →</button></div>
+    </section>
+
+    <section id="screen-build" class="screen">
+      <div class="section-heading">
+        <p class="step">FASE 2 / 5</p>
+        <h2>Diseña la nave</h2>
+        <p>Selecciona componentes sin superar el presupuesto ni la masa máxima.</p>
+      </div>
+      <div id="componentCards" class="card-grid components"></div>
+      <div class="build-summary">
+        <strong id="buildMessage">Selecciona al menos 3 componentes.</strong>
+        <button id="buildNext" class="primary-btn" disabled>LANZAR MISIÓN →</button>
+      </div>
+    </section>
+
+    <section id="screen-flight" class="screen">
+      <div class="section-heading">
+        <p class="step">FASE 3 / 5</p>
+        <h2>La misión está en curso</h2>
+        <p id="flightSubtitle">Tus decisiones determinarán el resultado.</p>
+      </div>
+      <div class="flight-layout">
+        <article id="eventPanel" class="event-panel">
+          <p id="eventDay" class="event-day"></p>
+          <div id="eventIcon" class="event-icon">☀️</div>
+          <h3 id="eventTitle"></h3>
+          <p id="eventDescription"></p>
+          <div id="eventChoices" class="choice-list"></div>
+        </article>
+        <aside class="astra-panel">
+          <div class="astra-avatar">A</div>
+          <div>
+            <p class="astra-label">ASTRA · ASISTENTE DE MISIÓN</p>
+            <p id="astraText">Analizaré tus decisiones y te explicaré sus consecuencias.</p>
+          </div>
+          <button id="astraAdvice" class="secondary-btn" type="button">Pedir análisis</button>
+        </aside>
+      </div>
+    </section>
+
+    <section id="screen-results" class="screen">
+      <div class="section-heading centered">
+        <p class="step">FASE 4 / 5</p>
+        <h2 id="resultTitle">Resultado de la misión</h2>
+        <p id="resultSummary"></p>
+      </div>
+      <div class="results-grid">
+        <div class="score-ring"><span id="finalScore">0</span><small>/100</small></div>
+        <div class="result-bars" id="resultBars"></div>
+      </div>
+      <article class="debrief-card">
+        <p class="step">FASE 5 / 5 · DEBRIEFING</p>
+        <h3 id="badgeTitle"></h3>
+        <p id="badgeText"></p>
+        <div id="scienceLesson" class="science-lesson"></div>
+      </article>
+      <div class="actions centered-actions"><button id="playAgain" class="primary-btn">JUGAR OTRA VEZ</button></div>
+    </section>
+  </main>
+
+  <footer>Prototipo educativo · Datos y reglas de demostración para entrenamiento previo al challenge.</footer>
+  <script src="game.js"></script>
+</body>
+</html>
